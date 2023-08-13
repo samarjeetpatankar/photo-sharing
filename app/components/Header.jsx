@@ -6,11 +6,11 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import app from "../shared/firebaseConfig";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { DocumentReference, Firestore } from "firebase/firestore";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 const Header = () => {
   const { data: session } = useSession();
-  const router=useRouter();
+  const router = useRouter();
   const db = getFirestore(app);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Header = () => {
         email: session.user.email,
         userImage: session.user.image,
       });
-    } 
+    }
   };
 
   return (
@@ -43,12 +43,7 @@ const Header = () => {
       >
         Home
       </button>
-      <button
-        className="font-semibold p-2 px-4
-         rounded-full "
-      >
-        Create
-      </button>
+      <button className="font-semibold p-2 px-4 rounded-full" onClick={()=> router.push('/pin-builder')}> Create </button>
       <div className="bg-[#e9e9e9] p-3 gap-3 items-center rounded-full w-full hidden md:flex">
         <HiSearch classname="text-[25px] text-gray-500 md:hidden" />
         <input
@@ -62,7 +57,7 @@ const Header = () => {
       {session?.user ? (
         <Image
           src={session?.user?.image}
-          onClick={()=>router.push('/'+session.user.email)}
+          onClick={() => router.push("/" + session.user.email)}
           alt="man"
           width={50}
           height={50}
