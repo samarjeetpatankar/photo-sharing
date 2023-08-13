@@ -5,7 +5,7 @@ import React, { useEffect } from 'react'
 import { useSession, signIn, signOut } from "next-auth/react"
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { HiSearch,HiBell,HiChat } from "react-icons/hi";
-import app from './../Shared/firebaseConfig'
+import app from "../shared/firebaseConfig"
 import { useRouter } from 'next/navigation';
 
 function Header() {
