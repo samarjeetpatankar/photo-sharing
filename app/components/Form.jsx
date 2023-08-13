@@ -7,7 +7,8 @@ import UserTag from "./UserTag";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import app from "../shared/firebaseConfig";
+import app from "../Shared/firebaseConfig";
+
 
 function Form() {
   const { data: session } = useSession();

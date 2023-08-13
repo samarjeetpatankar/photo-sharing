@@ -1,8 +1,9 @@
 "use client";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import app from "../shared/firebaseConfig";
+
 import UserInfo from "../components/UserInfo"
+import app from "../Shared/firebaseConfig";
 
 const Profile = ({ params }) => {
   const db = getFirestore(app);
