@@ -16,13 +16,13 @@ function UploadImage({ setFile }) {
         {!selectedFile ? (
           <div className="flex items-center flex-col">
             <HiArrowUpCircle className="text-[22px]" />
-            <h2 className=" font-semibold">Click to Upload</h2>
+            <h2 className=" font-semibold"> Click to Upload</h2>
           </div>
         ) : null}
         {selectedFile ? (
           <img
             src={window.URL.createObjectURL(selectedFile)}
-            alt="selected-image"
+            alt="selected-image" 
             width={500}
             height={800}
             className="object-contain h-[90%]"

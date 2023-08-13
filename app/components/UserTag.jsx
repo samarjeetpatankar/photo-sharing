@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 function UserTag({ user }) {
-  //const {data:session}=useSession();
+ // const {data:session}=useSession();
   return (
     <div className="">
       {user ? (
