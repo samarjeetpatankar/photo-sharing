@@ -1,14 +1,21 @@
 "use client";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-
-import UserInfo from "../components/UserInfo"
 import app from "../Shared/firebaseConfig";
-
-const Profile = ({ params }) => {
+import UserInfo from "./../components/UserInfo";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  getFirestore,
+  query,
+  where,
+} from "firebase/firestore";
+import PinList from "./../components/Pins/PinList";
+function Profile({ params }) {
   const db = getFirestore(app);
-  const [userInfo,setUserInfo]=useState();
-
+  const [userInfo, setUserInfo] = useState();
+  const [listOfPins, setListOfPins] = useState([]);
   useEffect(() => {
     console.log(params.userId.replace("%40", "@"));
     if (params) {
@@ -21,19 +28,41 @@ const Profile = ({ params }) => {
     const docSnap = await getDoc(docRef);
 
     if (docSnap.exists()) {
-     
-      setUserInfo(docSnap.data())
+      setUserInfo(docSnap.data());
     } else {
       // docSnap.data() will be undefined in this case
       console.log("No such document!");
     }
   };
+  useEffect(() => {
+    if (userInfo) {
+      getUserPins();
+    }
+  }, [userInfo]);
+  const getUserPins = async () => {
+    setListOfPins([]);
+    const q = query(
+      collection(db, "pinterest-post"),
+      where("email", "==", userInfo.email)
+    );
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.data() is never undefined for query doc snapshots
 
-  return( <div>
-    { userInfo ?
-    <UserInfo userInfo={userInfo}/>
-    : null}
-    </div> );
-};
+      setListOfPins((listOfPins) => [...listOfPins, doc.data()]);
+    });
+  };
+  return (
+    <div>
+      {userInfo ? (
+        <div>
+          <UserInfo userInfo={userInfo} />
+
+          <PinList listOfPins={listOfPins} />
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export default Profile;
