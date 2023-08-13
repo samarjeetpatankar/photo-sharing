@@ -34,6 +34,7 @@ const Header = () => {
         alt="logo"
         width={50}
         height={50}
+        onClick={() => router.push("/")}
         className="hover:bg-gray-300 p-2 rounded-full cursor-pointer"
       />
       <button
@@ -43,7 +44,13 @@ const Header = () => {
       >
         Home
       </button>
-      <button className="font-semibold p-2 px-4 rounded-full" onClick={()=> router.push('/pin-builder')}> Create </button>
+      <button
+        className="font-semibold p-2 px-4 rounded-full"
+        onClick={() => router.push("/pin-builder")}
+      >
+        {" "}
+        Create{" "}
+      </button>
       <div className="bg-[#e9e9e9] p-3 gap-3 items-center rounded-full w-full hidden md:flex">
         <HiSearch classname="text-[25px] text-gray-500 md:hidden" />
         <input
