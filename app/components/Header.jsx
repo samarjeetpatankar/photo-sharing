@@ -6,9 +6,11 @@ import { doc, getFirestore, setDoc } from "firebase/firestore";
 import app from "../shared/firebaseConfig";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { DocumentReference, Firestore } from "firebase/firestore";
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const { data: session } = useSession();
+  const router=useRouter();
   const db = getFirestore(app);
 
   useEffect(() => {
@@ -59,7 +61,8 @@ const Header = () => {
       <HiChat className="text-[40px]  text-gray-500 cursor-pointer" />
       {session?.user ? (
         <Image
-          src={session?.user?.image || ""}
+          src={session?.user?.image}
+          onClick={()=>router.push('/'+session.user.email)}
           alt="man"
           width={50}
           height={50}
