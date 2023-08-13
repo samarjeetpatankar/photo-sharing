@@ -3,8 +3,9 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { HiSearch, HiBell, HiChat } from "react-icons/hi";
 import { doc, getFirestore, setDoc } from "firebase/firestore";
-import app from "./../shared/firebaseConfig";
+import app from "../shared/firebaseConfig";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { DocumentReference, Firestore } from "firebase/firestore";
 
 const Header = () => {
   const { data: session } = useSession();
@@ -21,7 +22,7 @@ const Header = () => {
         email: session.user.email,
         userImage: session.user.image,
       });
-    }
+    } 
   };
 
   return (
