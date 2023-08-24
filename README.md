@@ -1,7 +1,5 @@
 # Photo Sharing Web App with Next.js, NextAuth.js, Firebase, and Tailwind CSS
 
-![Project Preview](project-preview.png)
-
 This project is a Pinterest-like frontend built using Next.js, NextAuth.js for authentication, Firebase for backend services, and Tailwind CSS for styling. It allows users to create and share images just like Pinterest.
 
 ## Features
@@ -11,7 +9,7 @@ This project is a Pinterest-like frontend built using Next.js, NextAuth.js for a
 - Responsive and visually appealing design using Tailwind CSS
 - Explore and discover images from other users
 
-## About Me
+## About 
 
 I'm excited to introduce my dynamic photo-sharing app created using Next.js, Firebase, and Tailwind CSS. The app offers seamless photo uploading and sharing, with integrated Google authentication ensuring secure logins. The frontend components prioritize the user experience, delivering a responsive and friendly interface.
 
